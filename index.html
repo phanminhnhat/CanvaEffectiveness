@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Sử Dụng Canva Hiệu Quả</title>
+    <!-- Tải Tailwind CSS để tạo kiểu nhanh chóng và responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tùy chỉnh font chữ Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Màu nền nhẹ nhàng */
+            color: #333; /* Màu chữ chính */
+            line-height: 1.6;
+        }
+        /* Style cho nút accordion */
+        .accordion-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: #e0f2fe; /* Màu nền xanh nhạt */
+            color: #0c4a6e; /* Màu chữ xanh đậm */
+            font-weight: 600;
+            text-align: left;
+            border-radius: 0.5rem; /* Bo tròn góc */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-button:hover {
+            background-color: #bae6fd; /* Màu xanh nhạt hơn khi hover */
+        }
+        .accordion-button.active {
+            background-color: #0c4a6e; /* Màu xanh đậm khi active */
+            color: white; /* Chữ trắng khi active */
+        }
+        /* Icon mũi tên */
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .accordion-icon {
+            transform: rotate(180deg); /* Xoay mũi tên khi mở */
+        }
+        /* Nội dung accordion */
+        .accordion-content {
+            padding: 1rem 1.5rem;
+            background-color: white;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            border: 1px solid #e0f2fe;
+            border-top: none; /* Loại bỏ đường viền trên để liền với nút */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Đủ lớn để chứa nội dung */
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+        }
+        /* Thẻ h2 cho các phần chính */
+        h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem; /* Đảm bảo khoảng cách từ thanh nav cố định */
+            scroll-margin-top: 5rem; /* Điều chỉnh để thanh nav không che tiêu đề khi scroll */
+            display: flex;
+            align-items: center; /* Căn giữa icon và text */
+            gap: 0.75rem; /* Khoảng cách giữa icon và text */
+        }
+        h2 svg {
+            color: #0c4a6e; /* Màu icon tương tự màu chủ đạo */
+        }
+        /* Thanh điều hướng cố định */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #1e3a8a; /* Màu xanh đậm */
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .sticky-nav a {
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s ease;
+        }
+        .sticky-nav a:hover {
+            background-color: #3b82f6; /* Màu xanh sáng hơn khi hover */
+        }
+        /* Footer styling */
+        footer {
+            background-color: #1e3a8a; /* Màu xanh đậm */
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        /* Styling cho các icon nhỏ trong accordion-content */
+        .accordion-content p strong {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem; /* Khoảng cách giữa icon và text strong */
+        }
+        .accordion-content p strong svg {
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Thanh điều hướng cố định -->
+    <nav class="sticky-nav">
+        <div class="container mx-auto px-4 flex flex-wrap justify-center space-x-2 md:space-x-4 text-sm md:text-base">
+            <a href="#proposal" class="whitespace-nowrap">Tạo Proposal</a>
+            <a href="#excel-reports" class="whitespace-nowrap">Báo cáo từ Excel</a>
+            <a href="#brochure" class="whitespace-nowrap">Làm Brochure</a>
+            <a href="#video" class="whitespace-nowrap">Làm Video</a>
+            <a href="#translation" class="whitespace-nowrap">Dịch Tài liệu</a>
+            <a href="#ai-web" class="whitespace-nowrap">Làm Web AI</a>
+            <a href="#poster" class="whitespace-nowrap">Làm Poster</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4">Hướng Dẫn Sử Dụng Canva Hiệu Quả</h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">Chào bạn, đây là bộ slide hướng dẫn chi tiết cách sử dụng Canva cho các mục đích bạn đã yêu cầu.</p>
+        </header>
+
+        <!-- Phần 1: Tạo Proposal Dạng PPT Đẹp với Canva -->
+        <section id="proposal" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                1. Tạo Proposal Dạng PPT Đẹp với Canva
+            </h2>
+            <p class="text-gray-600 mb-6">Với Canva, bạn có thể tạo proposal chuyên nghiệp mà không cần kinh nghiệm thiết kế.</p>
+
+            <!-- Slide 1: Bắt đầu với Mẫu Proposal -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 1: Bắt đầu với Mẫu Proposal</span>
+                    <!-- Mũi tên SVG cho trạng thái đóng/mở -->
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo proposal thu hút, chuyên nghiệp và có bố cục rõ ràng.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Từ trang chủ Canva, tìm kiếm "Proposal Presentation" trong thanh tìm kiếm.</li>
+                        <li>Chọn một mẫu phù hợp với ngành nghề hoặc phong cách dự án của bạn. Canva cung cấp vô số mẫu từ đơn giản, tối giản đến hiện đại, sáng tạo.</li>
+                        <li>Bắt đầu tùy chỉnh mẫu đã chọn.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 2: Tùy chỉnh nội dung và hình ảnh -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 2: Tùy chỉnh nội dung và hình ảnh (Làm prototype cơ bản)</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Cá nhân hóa proposal và phác thảo giao diện prototype nhanh chóng.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><strong>Văn bản:</strong> Nhấp đúp vào các hộp văn bản để chỉnh sửa tiêu đề, nội dung, giới thiệu dự án, mục tiêu, giải pháp và chi phí. Sử dụng các font chữ dễ đọc và kích thước phù hợp (tiêu đề lớn, nội dung vừa).</li>
+                        <li><strong>Hình ảnh:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li><strong>Tải lên ảnh của bạn:</strong> Kéo và thả ảnh từ máy tính vào Canva, hoặc dùng nút "Tải lên" trong tab "Tải lên".</li>
+                                <li><strong>Thư viện ảnh Canva:</strong> Tìm kiếm hình ảnh, biểu tượng (icons) hoặc đồ họa (graphics) liên quan trong tab "Thành phần" (Elements).</li>
+                                <li><strong>Thay thế ảnh mẫu:</strong> Kéo ảnh mới của bạn vào vị trí ảnh mẫu để thay thế.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Màu sắc:</strong> Thay đổi bảng màu cho phù hợp với thương hiệu hoặc chủ đề dự án của bạn bằng cách chọn các thành phần và sử dụng công cụ chọn màu.</li>
+                        <li><strong>Kỹ thuật chỉnh sửa hình làm Prototype cơ bản:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li><strong>Thiết kế Prototype cơ bản:</strong>
+                                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                                        <li>Tạo một thiết kế mới, chọn kích thước phù hợp với màn hình bạn muốn prototype (ví dụ: "Kích thước tùy chỉnh" hoặc "Trình bày 16:9" và điều chỉnh sau).</li>
+                                        <li>Sử dụng các hình dạng cơ bản từ tab "Thành phần" để tạo các khối giao diện (nút, thanh tìm kiếm, vùng chứa nội dung).</li>
+                                        <li>Thêm văn bản để mô tả chức năng của từng yếu tố.</li>
+                                        <li>Dùng tính năng "Khung" (Frames) trong "Thành phần" để chèn hình ảnh minh họa cho prototype, ví dụ như ảnh chụp màn hình ứng dụng hiện có hoặc hình ảnh sản phẩm.</li>
+                                    </ol>
+                                </li>
+                                <li><strong>Chỉnh sửa hình cơ bản:</strong>
+                                    <ul class="list-square list-inside ml-4 space-y-1">
+                                        <li><strong>Cắt</strong> (Crop) và <strong>Xoay</strong> (Flip): Nhấp vào hình ảnh, chọn "Cắt" hoặc "Lật" trên thanh công cụ.</li>
+                                        <li><strong>Bộ lọc</strong> (Filters) và <strong>Điều chỉnh</strong> (Adjust): Áp dụng các bộ lọc hoặc điều chỉnh độ sáng, độ tương phản, độ bão hòa để hình ảnh prototype trông hài hòa hơn.</li>
+                                        <li><strong>Hiệu ứng</strong> (Effects): Thử các hiệu ứng như "Duotone" hoặc "Background Remover" (Canva Pro) để làm nổi bật đối tượng hoặc tạo phong cách riêng.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 2: Dùng Canva để làm các Báo cáo Đẹp từ Excel -->
+        <section id="excel-reports" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
+                2. Dùng Canva để làm các Báo cáo Đẹp từ Excel
+            </h2>
+            <p class="text-gray-600 mb-6">Canva không trực tiếp chỉnh sửa Excel, nhưng là công cụ tuyệt vời để trực quan hóa dữ liệu từ Excel thành các báo cáo đẹp mắt.</p>
+
+            <!-- Slide 3: Nhập dữ liệu và tạo Biểu đồ -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 3: Nhập dữ liệu và tạo Biểu đồ</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Biến dữ liệu Excel thành biểu đồ và đồ họa đẹp, dễ hiểu.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Trong Excel, chuẩn bị dữ liệu của bạn thật rõ ràng, sắp xếp theo cột và hàng.</li>
+                        <li>Trong Canva, tạo một thiết kế mới (ví dụ: "Báo cáo" hoặc "Infographic").</li>
+                        <li>Từ tab "Thành phần" (Elements), tìm kiếm "Biểu đồ" (Charts).</li>
+                        <li>Chọn loại biểu đồ bạn muốn (biểu đồ cột, đường, tròn, thanh...).</li>
+                        <li>Sau khi chèn biểu đồ, một bảng sẽ hiện ra. Bạn có thể:
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li><strong>Nhập thủ công:</strong> Sao chép và dán dữ liệu từ Excel vào bảng này.</li>
+                                <li><strong>Tải lên file CSV:</strong> Chọn nút "Tải lên" trong bảng dữ liệu của biểu đồ để nhập file CSV từ Excel.</li>
+                            </ul>
+                        </li>
+                        <li>Tùy chỉnh màu sắc, font chữ, nhãn và tiêu đề của biểu đồ để phù hợp với thẩm mỹ báo cáo của bạn.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 4: Thiết kế Bảng và Infographic -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 4: Thiết kế Bảng và Infographic</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Trình bày dữ liệu số và thông tin phức tạp một cách trực quan, hấp dẫn.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><strong>Tạo bảng biểu:</strong> Sử dụng các "Đường" (Lines) và "Hình dạng" (Shapes) trong "Thành phần" để tạo các ô bảng. Dán dữ liệu từ Excel vào các ô này.</li>
+                        <li><strong>Infographic:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Tìm kiếm "Infographic" trong phần mẫu để bắt đầu.</li>
+                                <li>Sử dụng các biểu tượng, hình ảnh, và đồ họa thông tin để kể câu chuyện từ dữ liệu của bạn một cách hấp dẫn.</li>
+                                <li>Canva có nhiều template infographic với cấu trúc sẵn, giúp bạn dễ dàng điền thông tin và dữ liệu.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 3: Dùng Canva để làm Brochure cho Sản phẩm -->
+        <section id="brochure" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                3. Dùng Canva để làm Brochure cho Sản phẩm
+            </h2>
+            <p class="text-gray-600 mb-6">Canva là công cụ lý tưởng để tạo brochure sản phẩm thu hút và chuyên nghiệp.</p>
+
+            <!-- Slide 5: Thiết kế Brochure chuyên nghiệp -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 5: Thiết kế Brochure chuyên nghiệp</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo brochure giới thiệu sản phẩm hiệu quả, truyền tải thông điệp rõ ràng.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Tìm kiếm "Brochure" hoặc "Tờ gấp sản phẩm" trên Canva. Chọn mẫu brochure (gấp đôi, gấp ba,...) phù hợp.</li>
+                        <li>Thay thế hình ảnh mẫu bằng hình ảnh sản phẩm chất lượng cao của bạn. Đảm bảo hình ảnh sắc nét và thể hiện rõ các đặc điểm nổi bật của sản phẩm.</li>
+                        <li>Viết nội dung ngắn gọn, súc tích về sản phẩm, bao gồm: tên, mô tả ngắn, tính năng, lợi ích, và thông tin liên hệ.</li>
+                        <li>Sử dụng màu sắc và font chữ nhất quán với thương hiệu của bạn.</li>
+                        <li>Thêm logo công ty và thông tin liên hệ rõ ràng.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 4: Làm Video cho Sản phẩm với Canva -->
+        <section id="video" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
+                4. Làm Video cho Sản phẩm với Canva
+            </h2>
+            <p class="text-gray-600 mb-6">Canva cung cấp các công cụ chỉnh sửa video cơ bản và dễ sử dụng, bao gồm cả tính năng chuyển văn bản thành giọng nói (text-to-speech).</p>
+
+            <!-- Slide 6: Tạo Video sản phẩm cơ bản -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 6: Tạo Video sản phẩm cơ bản</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo video giới thiệu sản phẩm nhanh chóng và cuốn hút.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Từ trang chủ, chọn "Video" hoặc tìm kiếm "Product Video".</li>
+                        <li>Chọn một mẫu video có sẵn hoặc bắt đầu từ trang trống.</li>
+                        <li><strong>Thêm cảnh</strong> (Scenes): Tải lên các đoạn phim ngắn, hình ảnh sản phẩm của bạn vào tab "Tải lên". Kéo và thả chúng vào dòng thời gian.</li>
+                        <li><strong>Thêm văn bản và hiệu ứng:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Thêm tiêu đề, mô tả sản phẩm vào từng cảnh.</li>
+                                <li>Sử dụng hiệu ứng chuyển cảnh (transitions) đơn giản giữa các cảnh.</li>
+                                <li>Thêm nhạc nền từ thư viện âm thanh của Canva (hoặc tải lên nhạc của bạn).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Cắt</strong> (Trim) và <strong>Chia</strong> (Split) video: Điều chỉnh độ dài của các đoạn video trên dòng thời gian.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 7: Thêm Âm thanh từ Văn bản (Text-to-Speech) -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 7: Thêm Âm thanh từ Văn bản (Text-to-Speech)</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo giọng đọc tự động cho nội dung video, giúp video trở nên chuyên nghiệp hơn mà không cần thu âm.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Trong trình chỉnh sửa video của Canva, chọn tab "Ứng dụng" (Apps) ở thanh công cụ bên trái.</li>
+                        <li>Tìm kiếm "Chuyển văn bản thành giọng nói" (Text to Speech) hoặc "Type to voice".</li>
+                        <li>Nhập đoạn văn bản bạn muốn chuyển thành giọng nói vào ô nhập liệu.</li>
+                        <li>Chọn ngôn ngữ và giọng đọc (nam/nữ, kiểu giọng) phù hợp.</li>
+                        <li>Nhấp vào nút "Tạo âm thanh" (Generate Audio).</li>
+                        <li>Đoạn âm thanh sẽ được tạo và xuất hiện trong tab "Dự án" hoặc "Tải lên" của bạn. Kéo và thả đoạn âm thanh này vào dòng thời gian của video, căn chỉnh cho phù hợp với nội dung hình ảnh.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 5: Dùng Khả năng Dịch Tài liệu Tự động -->
+        <section id="translation" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                5. Dùng Khả năng Dịch Tài liệu Tự động (Canva và Công cụ tích hợp)
+            </h2>
+            <p class="text-gray-600 mb-6">Canva không có tính năng dịch tài liệu tự động tích hợp sẵn. Tuy nhiên, bạn có thể kết hợp Canva với các công cụ dịch thuật bên ngoài để xử lý tài liệu đa ngôn ngữ.</p>
+
+            <!-- Slide 8: Quy trình dịch tài liệu và thiết kế trong Canva -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 8: Quy trình dịch tài liệu và thiết kế trong Canva</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Dịch và trình bày tài liệu đa ngôn ngữ một cách hiệu quả, giữ nguyên bố cục đẹp của Canva.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li><strong>Dịch tài liệu gốc:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Sử dụng các công cụ dịch thuật trực tuyến như Google Dịch (Google Translate), DeepL, hoặc Microsoft Translator để dịch văn bản từ tài liệu của bạn sang ngôn ngữ mong muốn.</li>
+                                <li>Đối với tài liệu dài, bạn có thể tải file lên các công cụ này (nếu hỗ trợ) để dịch toàn bộ.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sao chép và dán vào Canva:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Sau khi có bản dịch, sao chép văn bản đã dịch.</li>
+                                <li>Mở thiết kế tài liệu của bạn trong Canva (ví dụ: Tài liệu A4, Báo cáo...).</li>
+                                <li>Dán văn bản đã dịch vào các hộp văn bản tương ứng trên slide.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Điều chỉnh thiết kế:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Do độ dài văn bản có thể thay đổi sau khi dịch, bạn cần điều chỉnh kích thước font chữ, vị trí hộp văn bản để đảm bảo bố cục hài hòa và dễ đọc.</li>
+                                <li>Kiểm tra kỹ lưỡng bản dịch và bố cục trước khi xuất bản.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 6: Làm Web nhanh từ công cụ AI Canva -->
+        <section id="ai-web" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+                6. Làm Web nhanh từ công cụ AI Canva
+            </h2>
+            <p class="text-gray-600 mb-6">Canva cung cấp tính năng tạo website một trang (one-page website) đơn giản, và có thể hỗ trợ AI trong việc tạo nội dung.</p>
+
+            <!-- Slide 9: Tạo Website một trang nhanh chóng -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 9: Tạo Website một trang nhanh chóng</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo website giới thiệu sản phẩm/dự án đơn giản, trực quan và nhanh chóng.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Từ trang chủ Canva, tìm kiếm "Website" hoặc "Trang web".</li>
+                        <li>Chọn một mẫu website một trang có sẵn. Canva có nhiều mẫu được thiết kế sẵn cho các mục đích như portfolio, sự kiện, kinh doanh nhỏ, v.v.</li>
+                        <li><strong>Tùy chỉnh nội dung:</strong> Tương tự như làm slide, bạn có thể chỉnh sửa văn bản, thay thế hình ảnh, video bằng nội dung của riêng bạn.</li>
+                        <li><strong>Thêm các phần</strong> (Sections): Website trong Canva được xây dựng từ các "phần". Bạn có thể thêm các phần mới (ví dụ: Giới thiệu, Dịch vụ, Liên hệ, Bộ sưu tập) và sắp xếp lại thứ tự của chúng.</li>
+                        <li><strong>Liên kết</strong> (Links): Tạo các nút hoặc văn bản có thể nhấp để liên kết đến các phần khác trên trang web của bạn, hoặc đến các trang web bên ngoài.</li>
+                        <li><strong>Tính năng Responsive:</strong> Canva tự động điều chỉnh bố cục website để hiển thị tốt trên các thiết bị khác nhau (máy tính, máy tính bảng, điện thoại).</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Slide 10: Sử dụng AI để hỗ trợ làm Web (Magic Design/Magic Write) -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 10: Sử dụng AI để hỗ trợ làm Web (Magic Design/Magic Write)</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tăng tốc quá trình tạo nội dung và thiết kế website bằng AI.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li><strong>Magic Design</strong> (Thiết kế Ma thuật):
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Khi tạo thiết kế website mới hoặc khi chọn một phần trống, bạn có thể dùng Magic Design.</li>
+                                <li>Nhập một mô tả ngắn về loại website bạn muốn tạo (ví dụ: "trang web giới thiệu sản phẩm công nghệ" hoặc "trang web portfolio cá nhân").</li>
+                                <li>Canva AI sẽ đề xuất các mẫu thiết kế và bố cục phù hợp, giúp bạn bắt đầu nhanh hơn.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Magic Write</strong> (Viết Ma thuật):
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Trong các hộp văn bản trên website của bạn, nhấp chuột phải và chọn "Magic Write".</li>
+                                <li>Cung cấp một gợi ý (prompt) cho AI về nội dung bạn muốn viết (ví dụ: "Viết phần giới thiệu về sản phẩm X", "Mô tả lợi ích của dịch vụ Y").</li>
+                                <li>AI sẽ tạo ra văn bản. Bạn có thể chỉnh sửa để phù hợp với giọng điệu và thông điệp của mình.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tối ưu và Xuất bản:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Sau khi hoàn thiện, nhấp vào nút "Xuất bản website" (Publish website) ở góc trên bên phải.</li>
+                                <li>Bạn có thể chọn một tên miền miễn phí của Canva hoặc sử dụng tên miền riêng của mình (Canva Pro).</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-blue-200 my-12">
+
+        <!-- Phần 7: Làm Poster nhanh cho Dự án với Canva -->
+        <section id="poster" class="mb-12">
+            <h2 class="text-3xl font-bold text-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+                7. Làm Poster nhanh cho Dự án với Canva
+            </h2>
+            <p class="text-gray-600 mb-6">Tạo poster dự án ấn tượng và nhanh chóng với thư viện mẫu khổng lồ của Canva.</p>
+
+            <!-- Slide 11: Thiết kế Poster dự án nổi bật -->
+            <div class="accordion-item mb-4">
+                <button class="accordion-button">
+                    <span>Slide 11: Thiết kế Poster dự án nổi bật</span>
+                    <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content">
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Mục tiêu:
+                    </strong> Tạo poster truyền tải thông điệp dự án rõ ràng, hấp dẫn và thu hút sự chú ý.</p>
+                    <p class="mb-2"><strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
+                        Cách làm:
+                    </strong></p>
+                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                        <li>Tìm kiếm "Project Poster" hoặc "Event Poster" trên Canva.</li>
+                        <li>Chọn mẫu phù hợp với phong cách dự án hoặc sự kiện của bạn.</li>
+                        <li><strong>Tiêu đề lớn, rõ ràng:</strong> Thay đổi tiêu đề chính của poster để làm nổi bật tên dự án hoặc thông điệp cốt lõi. Sử dụng font chữ đậm, kích thước lớn.</li>
+                        <li><strong>Hình ảnh/Đồ họa chính:</strong> Chọn một hình ảnh hoặc đồ họa lớn, ấn tượng liên quan đến dự án của bạn để làm điểm nhấn thị giác.</li>
+                        <li><strong>Thông tin cốt lõi:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Liệt kê các thông tin quan trọng như mục tiêu dự án, kết quả chính, thời gian, địa điểm (nếu có).</li>
+                                <li>Sử dụng các gạch đầu dòng hoặc biểu tượng để thông tin dễ đọc.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Call to Action</strong> (CTA): Thêm lời kêu gọi hành động rõ ràng (ví dụ: "Tìm hiểu thêm", "Tham gia ngay").</li>
+                        <li><strong>Thông tin liên hệ/Logo:</strong> Đảm bảo logo công ty/dự án và thông tin liên hệ được hiển thị rõ ràng.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Copyright by Nhat Phan</p>
+    </footer>
+
+    <script>
+        // Lấy tất cả các nút accordion
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Lấy phần nội dung ngay sau nút
+                const content = button.nextElementSibling;
+                // Lấy icon mũi tên trong nút
+                const icon = button.querySelector('.accordion-icon');
+
+                // Toggle class 'active' cho nút
+                button.classList.toggle('active');
+                // Toggle class 'open' cho nội dung để hiển thị/ẩn
+                content.classList.toggle('open');
+
+                // Kiểm tra xem nội dung đã mở hay đóng để điều chỉnh max-height (nếu cần)
+                // Ban đầu, max-height là 0. Khi mở, đặt một giá trị đủ lớn để hiển thị toàn bộ nội dung.
+                // Khi đóng lại, về 0.
+                if (content.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px"; // Đặt max-height theo chiều cao thực của nội dung
+                } else {
+                    content.style.maxHeight = "0";
+                }
+            });
+        });
+
+        // Đảm bảo thanh điều hướng xử lý smooth scroll
+        document.querySelectorAll('.sticky-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Cuộn mượt đến phần tử đích
+                    window.scrollTo({
+                        top: targetElement.offsetTop - document.querySelector('.sticky-nav').offsetHeight, // Điều chỉnh để thanh nav không che tiêu đề
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Cập nhật năm hiện tại cho copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
