@@ -59,7 +59,7 @@
         .accordion-content.open {
             padding-top: 1rem;
             padding-bottom: 1.5rem;
-            /* max-height sẽ được set bằng JS để khớp với scrollHeight */
+            /* max-height sẽ được set bằng JS để khớp với scrollHeight hoặc giá trị lớn */
         }
         /* Thẻ h2 cho các phần chính */
         h2 {
@@ -599,30 +599,30 @@
 
         accordionButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Lấy phần nội dung ngay sau nút
                 const content = button.nextElementSibling;
-                // Lấy icon mũi tên trong nút
                 const icon = button.querySelector('.accordion-icon');
 
-                // Toggle class 'active' cho nút
+                // Toggle lớp 'active' cho nút
                 button.classList.toggle('active');
-                // Toggle class 'open' cho nội dung để hiển thị/ẩn
-                content.classList.toggle('open');
 
-                // Kiểm tra xem nội dung đã mở hay đóng để điều chỉnh max-height (nếu cần)
-                // Ban đầu, max-height là 0. Khi mở, đặt một giá trị đủ lớn để hiển thị toàn bộ nội dung.
-                // Khi đóng lại, về 0.
+                // Kiểm tra trạng thái hiện tại của accordion
                 if (content.classList.contains('open')) {
-                    // Cần set max-height sau khi padding đã được áp dụng bởi lớp 'open'
-                    // Sử dụng setTimeout để đảm bảo trình duyệt đã render padding mới
-                    setTimeout(() => {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }, 0);
+                    // Nếu đang mở, bắt đầu quá trình đóng:
+                    // 1. Đặt max-height về giá trị hiện tại (scrollHeight) để đảm bảo animation mượt mà từ chiều cao thực tế
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    // 2. Sử dụng requestAnimationFrame để đảm bảo trình duyệt đã cập nhật max-height trước khi đặt về 0
+                    requestAnimationFrame(() => {
+                        content.style.maxHeight = "0";
+                        content.classList.remove('open'); // Loại bỏ lớp 'open' sau khi animation bắt đầu
+                    });
                 } else {
-                    content.style.maxHeight = content.scrollHeight + "px"; // Giữ chiều cao hiện tại trước khi thu gọn
-                    setTimeout(() => {
-                        content.style.maxHeight = "0"; // Thu gọn về 0
-                    }, 0);
+                    // Nếu đang đóng, bắt đầu quá trình mở:
+                    content.classList.add('open'); // Thêm lớp 'open' để áp dụng padding
+                    // Sử dụng requestAnimationFrame để đảm bảo padding đã được áp dụng trước khi lấy scrollHeight
+                    requestAnimationFrame(() => {
+                        // Đặt max-height thành một giá trị lớn để đảm bảo nó luôn bung ra hoàn toàn
+                        content.style.maxHeight = "9999px"; // Giá trị đủ lớn để chứa mọi nội dung
+                    });
                 }
             });
         });
