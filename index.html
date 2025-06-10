@@ -45,20 +45,21 @@
         }
         /* Nội dung accordion */
         .accordion-content {
-            padding: 1rem 1.5rem;
             background-color: white;
             border-bottom-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
             border: 1px solid #e0f2fe;
             border-top: none; /* Loại bỏ đường viền trên để liền với nút */
-            max-height: 0;
+            max-height: 0; /* Mặc định thu gọn hoàn toàn */
+            padding-top: 0; /* Đảm bảo không có padding khi thu gọn */
+            padding-bottom: 0; /* Đảm bảo không có padding khi thu gọn */
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Chuyển động cả chiều cao và padding */
         }
         .accordion-content.open {
-            max-height: 1000px; /* Đủ lớn để chứa nội dung */
             padding-top: 1rem;
             padding-bottom: 1.5rem;
+            /* max-height sẽ được set bằng JS để khớp với scrollHeight */
         }
         /* Thẻ h2 cho các phần chính */
         h2 {
@@ -101,14 +102,21 @@
             border-top-left-radius: 0.5rem;
             border-top-right-radius: 0.5rem;
         }
-        /* Styling cho các icon nhỏ trong accordion-content */
-        .accordion-content p strong {
-            display: inline-flex;
+        /* Styling cho các tiêu đề nhỏ trong accordion-content */
+        .accordion-content .sub-heading {
+            display: flex; /* Sử dụng flex để căn chỉnh icon và text */
             align-items: center;
-            gap: 0.5rem; /* Khoảng cách giữa icon và text strong */
+            gap: 0.5rem; /* Khoảng cách giữa icon và text */
+            font-weight: bold; /* Làm đậm tiêu đề */
+            color: #0c4a6e; /* Màu chữ */
+            margin-bottom: 0.5rem; /* Khoảng cách dưới tiêu đề */
         }
-        .accordion-content p strong svg {
-            color: #0c4a6e;
+        .accordion-content .sub-content {
+            margin-left: 1.75rem; /* Thụt lề nội dung để thẳng hàng với text sau icon */
+            margin-bottom: 1rem; /* Khoảng cách dưới nội dung */
+        }
+        .accordion-content .sub-content:last-child {
+            margin-bottom: 0; /* Loại bỏ margin-bottom cho phần tử cuối cùng */
         }
     </style>
 </head>
@@ -148,15 +156,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo proposal thu hút, chuyên nghiệp và có bố cục rõ ràng.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo proposal thu hút, chuyên nghiệp và có bố cục rõ ràng.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Từ trang chủ Canva, tìm kiếm "Proposal Presentation" trong thanh tìm kiếm.</li>
                         <li>Chọn một mẫu phù hợp với ngành nghề hoặc phong cách dự án của bạn. Canva cung cấp vô số mẫu từ đơn giản, tối giản đến hiện đại, sáng tạo.</li>
                         <li>Bắt đầu tùy chỉnh mẫu đã chọn.</li>
@@ -171,15 +181,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Cá nhân hóa proposal và phác thảo giao diện prototype nhanh chóng.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Cá nhân hóa proposal và phác thảo giao diện prototype nhanh chóng.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ul class="list-disc list-inside ml-4 space-y-2">
+                    </p>
+                    <ul class="list-disc list-inside ml-7 space-y-2 sub-content">
                         <li><strong>Văn bản:</strong> Nhấp đúp vào các hộp văn bản để chỉnh sửa tiêu đề, nội dung, giới thiệu dự án, mục tiêu, giải pháp và chi phí. Sử dụng các font chữ dễ đọc và kích thước phù hợp (tiêu đề lớn, nội dung vừa).</li>
                         <li><strong>Hình ảnh:</strong>
                             <ul class="list-circle list-inside ml-4 space-y-1">
@@ -230,15 +242,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Biến dữ liệu Excel thành biểu đồ và đồ họa đẹp, dễ hiểu.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Biến dữ liệu Excel thành biểu đồ và đồ họa đẹp, dễ hiểu.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Trong Excel, chuẩn bị dữ liệu của bạn thật rõ ràng, sắp xếp theo cột và hàng.</li>
                         <li>Trong Canva, tạo một thiết kế mới (ví dụ: "Báo cáo" hoặc "Infographic").</li>
                         <li>Từ tab "Thành phần" (Elements), tìm kiếm "Biểu đồ" (Charts).</li>
@@ -261,15 +275,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Trình bày dữ liệu số và thông tin phức tạp một cách trực quan, hấp dẫn.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Trình bày dữ liệu số và thông tin phức tạp một cách trực quan, hấp dẫn.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ul class="list-disc list-inside ml-4 space-y-2">
+                    </p>
+                    <ul class="list-disc list-inside ml-7 space-y-2 sub-content">
                         <li><strong>Tạo bảng biểu:</strong> Sử dụng các "Đường" (Lines) và "Hình dạng" (Shapes) trong "Thành phần" để tạo các ô bảng. Dán dữ liệu từ Excel vào các ô này.</li>
                         <li><strong>Infographic:</strong>
                             <ul class="list-circle list-inside ml-4 space-y-1">
@@ -300,15 +316,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo brochure giới thiệu sản phẩm hiệu quả, truyền tải thông điệp rõ ràng.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo brochure giới thiệu sản phẩm hiệu quả, truyền tải thông điệp rõ ràng.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Tìm kiếm "Brochure" hoặc "Tờ gấp sản phẩm" trên Canva. Chọn mẫu brochure (gấp đôi, gấp ba,...) phù hợp.</li>
                         <li>Thay thế hình ảnh mẫu bằng hình ảnh sản phẩm chất lượng cao của bạn. Đảm bảo hình ảnh sắc nét và thể hiện rõ các đặc điểm nổi bật của sản phẩm.</li>
                         <li>Viết nội dung ngắn gọn, súc tích về sản phẩm, bao gồm: tên, mô tả ngắn, tính năng, lợi ích, và thông tin liên hệ.</li>
@@ -336,15 +354,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo video giới thiệu sản phẩm nhanh chóng và cuốn hút.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo video giới thiệu sản phẩm nhanh chóng và cuốn hút.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Từ trang chủ, chọn "Video" hoặc tìm kiếm "Product Video".</li>
                         <li>Chọn một mẫu video có sẵn hoặc bắt đầu từ trang trống.</li>
                         <li><strong>Thêm cảnh</strong> (Scenes): Tải lên các đoạn phim ngắn, hình ảnh sản phẩm của bạn vào tab "Tải lên". Kéo và thả chúng vào dòng thời gian.</li>
@@ -367,15 +387,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo giọng đọc tự động cho nội dung video, giúp video trở nên chuyên nghiệp hơn mà không cần thu âm.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo giọng đọc tự động cho nội dung video, giúp video trở nên chuyên nghiệp hơn mà không cần thu âm.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Trong trình chỉnh sửa video của Canva, chọn tab "Ứng dụng" (Apps) ở thanh công cụ bên trái.</li>
                         <li>Tìm kiếm "Chuyển văn bản thành giọng nói" (Text to Speech) hoặc "Type to voice".</li>
                         <li>Nhập đoạn văn bản bạn muốn chuyển thành giọng nói vào ô nhập liệu.</li>
@@ -404,15 +426,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Dịch và trình bày tài liệu đa ngôn ngữ một cách hiệu quả, giữ nguyên bố cục đẹp của Canva.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Dịch và trình bày tài liệu đa ngôn ngữ một cách hiệu quả, giữ nguyên bố cục đẹp của Canva.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li><strong>Dịch tài liệu gốc:</strong>
                             <ul class="list-circle list-inside ml-4 space-y-1">
                                 <li>Sử dụng các công cụ dịch thuật trực tuyến như Google Dịch (Google Translate), DeepL, hoặc Microsoft Translator để dịch văn bản từ tài liệu của bạn sang ngôn ngữ mong muốn.</li>
@@ -454,15 +478,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo website giới thiệu sản phẩm/dự án đơn giản, trực quan và nhanh chóng.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo website giới thiệu sản phẩm/dự án đơn giản, trực quan và nhanh chóng.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Từ trang chủ Canva, tìm kiếm "Website" hoặc "Trang web".</li>
                         <li>Chọn một mẫu website một trang có sẵn. Canva có nhiều mẫu được thiết kế sẵn cho các mục đích như portfolio, sự kiện, kinh doanh nhỏ, v.v.</li>
                         <li><strong>Tùy chỉnh nội dung:</strong> Tương tự như làm slide, bạn có thể chỉnh sửa văn bản, thay thế hình ảnh, video bằng nội dung của riêng bạn.</li>
@@ -480,15 +506,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tăng tốc quá trình tạo nội dung và thiết kế website bằng AI.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tăng tốc quá trình tạo nội dung và thiết kế website bằng AI.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li><strong>Magic Design</strong> (Thiết kế Ma thuật):
                             <ul class="list-circle list-inside ml-4 space-y-1">
                                 <li>Khi tạo thiết kế website mới hoặc khi chọn một phần trống, bạn có thể dùng Magic Design.</li>
@@ -531,15 +559,17 @@
                     <svg class="accordion-icon w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content">
-                    <p class="mb-2"><strong>
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         Mục tiêu:
-                    </strong> Tạo poster truyền tải thông điệp dự án rõ ràng, hấp dẫn và thu hút sự chú ý.</p>
-                    <p class="mb-2"><strong>
+                    </p>
+                    <p class="sub-content">Tạo poster truyền tải thông điệp dự án rõ ràng, hấp dẫn và thu hút sự chú ý.</p>
+
+                    <p class="sub-heading">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-square"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9.5 8.5 5 3.5-5 3.5V8.5z"/></svg>
                         Cách làm:
-                    </strong></p>
-                    <ol class="list-decimal list-inside ml-4 space-y-1">
+                    </p>
+                    <ol class="list-decimal list-inside ml-7 space-y-1 sub-content">
                         <li>Tìm kiếm "Project Poster" hoặc "Event Poster" trên Canva.</li>
                         <li>Chọn mẫu phù hợp với phong cách dự án hoặc sự kiện của bạn.</li>
                         <li><strong>Tiêu đề lớn, rõ ràng:</strong> Thay đổi tiêu đề chính của poster để làm nổi bật tên dự án hoặc thông điệp cốt lõi. Sử dụng font chữ đậm, kích thước lớn.</li>
@@ -583,9 +613,16 @@
                 // Ban đầu, max-height là 0. Khi mở, đặt một giá trị đủ lớn để hiển thị toàn bộ nội dung.
                 // Khi đóng lại, về 0.
                 if (content.classList.contains('open')) {
-                    content.style.maxHeight = content.scrollHeight + "px"; // Đặt max-height theo chiều cao thực của nội dung
+                    // Cần set max-height sau khi padding đã được áp dụng bởi lớp 'open'
+                    // Sử dụng setTimeout để đảm bảo trình duyệt đã render padding mới
+                    setTimeout(() => {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }, 0);
                 } else {
-                    content.style.maxHeight = "0";
+                    content.style.maxHeight = content.scrollHeight + "px"; // Giữ chiều cao hiện tại trước khi thu gọn
+                    setTimeout(() => {
+                        content.style.maxHeight = "0"; // Thu gọn về 0
+                    }, 0);
                 }
             });
         });
